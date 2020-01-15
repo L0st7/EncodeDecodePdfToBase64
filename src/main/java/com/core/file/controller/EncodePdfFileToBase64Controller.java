@@ -9,6 +9,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.core.file.service.EncodePdfFileToBase64Service;
 
+/**
+ * @author <a href="mailto:hiepnv14@fpt.com.vn">hiepnv14</a>
+ * @version 1.0.0
+ * @date Jan 15, 2020
+ */
 @Controller
 public class EncodePdfFileToBase64Controller {
 	

@@ -14,6 +14,11 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+/**
+ * @author <a href="mailto:hiepnv14@fpt.com.vn">hiepnv14</a>
+ * @version 1.0.0
+ * @date Jan 15, 2020
+ */
 @Service
 public class DecodeBase64ToPdfFileService {
 	
@@ -43,4 +48,5 @@ public class DecodeBase64ToPdfFileService {
             return MediaType.APPLICATION_OCTET_STREAM;
         }
     }
-}
+}	
+
