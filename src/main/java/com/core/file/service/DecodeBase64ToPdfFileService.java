@@ -14,6 +14,8 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import com.core.file.common.Common;
+
 /**
  * @author <a href="mailto:hiepnv14@fpt.com.vn">hiepnv14</a>
  * @version 1.0.0
@@ -33,20 +35,10 @@ public class DecodeBase64ToPdfFileService {
 		byte[] decoder = Base64.getDecoder().decode(pdfFileContent);
 		FileUtils.writeByteArrayToFile(file, decoder);
 		byte[] bFile = Files.readAllBytes(file.toPath());
-		MediaType mediaType = getMediaTypeForFileName(this.servletContext, file.getName());
+		MediaType mediaType = Common.GetMediaTypeForFileName(this.servletContext, file.getName());
 		return ResponseEntity.ok()
 				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + file.getName())
 				.contentType(mediaType).contentLength(file.length()).body(bFile);
 	}
-	
-	public static MediaType getMediaTypeForFileName(ServletContext servletContext, String fileName) {
-        String mineType = servletContext.getMimeType(fileName);
-        try {
-            MediaType mediaType = MediaType.parseMediaType(mineType);
-            return mediaType;
-        } catch (Exception e) {
-            return MediaType.APPLICATION_OCTET_STREAM;
-        }
-    }
 }	
 

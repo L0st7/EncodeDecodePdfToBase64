@@ -9,25 +9,20 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.core.file.service.DecodeBase64ToPdfFileService;
-import com.core.file.service.EncodePdfFileToBase64Service;
+import com.core.file.service.CompressHtmlFileService;
 
 /**
  * @author <a href="mailto:hiepnv14@fpt.com.vn">hiepnv14</a>
  * @version 1.0.0
- * @date Jan 15, 2020
+ * @date Jan 16, 2020
  */
 @Controller
-public class DecodeBase64ToPdfFileController {
-	
+public class CompressHtmlFileController {
 	@Autowired
-	DecodeBase64ToPdfFileService decodeBase64ToPdfFileService;
+	CompressHtmlFileService compressHtmlFileService;
 	
-	@Autowired
-	EncodePdfFileToBase64Service encodePdfFileToBase64Service;
-	
-	@PostMapping("/report")
+	@PostMapping("/compress")
 	public ResponseEntity<?> decodeBase64 (@RequestParam MultipartFile multipartFile) throws IOException{
-		return decodeBase64ToPdfFileService.decodeBase64(encodePdfFileToBase64Service.encodePdfFile(multipartFile));
+		return compressHtmlFileService.compressHtmlFile(multipartFile);
 	}
 }

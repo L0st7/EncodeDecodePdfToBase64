@@ -22,7 +22,6 @@ public class EncodePdfFileToBase64Controller {
 	
 	@PostMapping("/uploadPdfFile")
 	public @ResponseBody String encodePdfFile(@RequestParam MultipartFile multipartFile) {
-		System.out.println(multipartFile);
 		return encodePdfFileToBase64Service.encodePdfFile(multipartFile);
 	}
 }
